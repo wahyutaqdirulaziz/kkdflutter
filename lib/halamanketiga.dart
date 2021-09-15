@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:travelapp/home.dart';
+
 
 class Halamanketiga extends StatefulWidget {
   String? nama;
@@ -13,10 +15,7 @@ class _HalamanketigaState extends State<Halamanketiga> {
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
+    Homepage(),
     Text(
       'Index 1: Business',
       style: optionStyle,
@@ -42,7 +41,15 @@ class _HalamanketigaState extends State<Halamanketiga> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: _selectedIndex == 0 ? Colors.amber : Colors.blueGrey,
-        title: Text(widget.nama!),
+        title: Text(_selectedIndex == 0
+            ? "Home"
+            : _selectedIndex == 1
+                ? "Berita"
+                : _selectedIndex == 2
+                    ? "Profile"
+                    : _selectedIndex == 3
+                        ? "Setting"
+                        : ""),
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
@@ -55,13 +62,13 @@ class _HalamanketigaState extends State<Halamanketiga> {
             backgroundColor: Colors.red,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Business',
+            icon: Icon(Icons.list),
+            label: 'Berita',
             backgroundColor: Colors.green,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'School',
+            icon: Icon(Icons.person),
+            label: 'Profile',
             backgroundColor: Colors.purple,
           ),
           BottomNavigationBarItem(
